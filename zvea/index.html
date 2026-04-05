@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<title>Zelal ❤️</title>
+
+<style>
+body {
+  margin: 0;
+  background: black;
+  color: white;
+  font-family: Arial, sans-serif;
+  overflow-x: hidden;
+  text-align: center;
+}
+
+/* BAŞLANGIÇ */
+#startScreen {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+button {
+  padding: 15px 30px;
+  font-size: 20px;
+  background: red;
+  border: none;
+  border-radius: 10px;
+  color: white;
+  cursor: pointer;
+}
+
+/* BAŞLIK KIRMIZI */
+#title {
+  font-size: 28px;
+  margin-top: 50px;
+  color: red;
+}
+
+/* ANA YAZI KALIN */
+#text {
+  margin-top: 20px;
+  padding: 20px;
+  font-size: 22px;
+  line-height: 1.6;
+  font-weight: bold;
+}
+
+/* FOTO */
+.photo {
+  width: 80%;
+  max-width: 400px;
+  margin: 30px auto;
+  display: block;
+  border-radius: 10px;
+  opacity: 0;
+  transition: 1s;
+}
+
+/* ALT ALAN */
+#afterText {
+  display: none;
+}
+
+/* ANİMASYON ITEM */
+.item {
+  position: fixed;
+  bottom: -20px;
+  font-size: 20px;
+  animation: floatUp linear forwards;
+}
+
+@keyframes floatUp {
+  0% { transform: translateY(0); opacity: 1; }
+  100% { transform: translateY(-110vh); opacity: 0; }
+}
+
+/* İMZA */
+#signature {
+  position: fixed;
+  bottom: 10px;
+  right: 10px;
+  font-size: 14px;
+}
+
+#signature a {
+  color: red;
+}
+</style>
+</head>
+
+<body>
+
+<div id="startScreen">
+  <button id="startBtn">Bas ❤️</button>
+</div>
+
+<div id="content" style="display:none;">
+
+  <h1 id="title"></h1>
+  <p id="text"></p>
+
+  <div id="afterText">
+
+    <!-- FOTOĞRAFLAR -->
+    <img src="foto1.jpeg" class="photo">
+    <img src="foto2.jpeg" class="photo">
+    <img src="foto3.jpeg" class="photo">
+
+    <!-- ALT BUTON -->
+    <div style="margin:40px;">
+      Buraya kadar kaydırdığın için teşekkür ederim bunu hakettin Zelalim <br>⬇️<br><br>
+      <button id="flowerBtn">Bas 🌸</button>
+    </div>
+
+    <!-- SON YAZI -->
+    <div id="finalArea" style="display:none; margin:40px;">
+      Eğerki olurda yazmayı düşünüyorsan buraya basabilirsin;<br><br>
+      <a href="https://wa.me/905523315040" target="_blank">Bu linke bas</a>
+    </div>
+
+  </div>
+
+</div>
+
+<!-- İMZA -->
+<div id="signature">
+  By <a href="https://wa.me/905523315040" target="_blank">ArdaBayrak</a>
+</div>
+
+<script>
+const btn = document.getElementById("startBtn");
+const content = document.getElementById("content");
+const title = document.getElementById("title");
+const text = document.getElementById("text");
+const afterText = document.getElementById("afterText");
+const photos = document.querySelectorAll(".photo");
+const flowerBtn = document.getElementById("flowerBtn");
+const finalArea = document.getElementById("finalArea");
+
+const titleText = "Arda’dan Zelal’ine";
+const message = "Bu storyi sadece sen görüyorsun Zelal, biliyorum belki fark ediyorsundur ama bunu bilmeni gerçekten istiyorum çünkü ben seni gerçekten çok seviyorum ve umarım bunu düşünüyorsundur aklından geçiriyorsundur yani şunu söylemek istiyorum ki ben öyle biri değilim senin güvenini kıracak birisi değilim asla yapmam öyle şeyleri her zaman düşünüyorum yaptıklarımı ve söyleyeceklerimi umarım bunu anlıyorsundur ve görüyorsundur belki atlamış olabilirsin bu yazıyı ama sana site yapmamın sebebi sadece bunu bilmeni istemem seni düşündüğümü bilmeni istiyorum kalbimde ne hissettiğimi ve sana karşı olan hislerimi saklamıyorum ve gizlemiyorum çünkü sana karşı dürüst olmak istiyorum ve bunu hep böyle yapmak istiyorum belki fark etmedin ama ben bunu çok önemsiyorum ve seninle her zaman böyle paylaşmak istiyorum bu siteyi sana yaptım yani sadece senin için emek verdim bunu bilmeni istiyorum çünkü seninle ilgilenmek ve sana bir şeyler yapmak benim için çok önemli seni mutlu etmek istiyorum ve senin yanında olmak istiyorum umarım bunu hissediyorsundur ve biliyorsundur belki fark etmeden gözünden kaçtı ama ben her zaman seninleyim ve sana her zaman vakit geçirmek istiyorum buradan ya da başka bir yerden fark etmez umarım bana bir yerden yazarsın ve belki konuşuruz böylece hissettiğini daha iyi anlayabilirim ve seninle daha çok vakit geçirebilirim çünkü seni seviyorum ve bunu her fırsatta göstermek istiyorum ❤️ senin için hep buradayım umarım bunu anlıyorsundur ve kalbime dokunan her şeyi paylaşıyorum çünkü sen benim için çok değerlisin ve her zaman öyle kalacaksın seninle her şey daha güzel her şey daha özel seninle olduğumda her şey anlam kazanıyor ve senin yanında kendimi arınmış hissediyorum umarım bunu hissediyorsundur ve biliyorsundur ben hep seni düşünüyorum hep seni seviyorum ve bunu sana göstermek istiyorum umarım bunu görüyorsundur ve belki bunları okuduktan sonra yazarsın çünkü sen benim her şeyimsin ve bunu bilmeni istiyorum ❤️❤️❤️";
+
+btn.onclick = () => {
+  document.getElementById("startScreen").style.display = "none";
+  content.style.display = "block";
+  typeTitle();
+  hearts();
+};
+
+/* BAŞLIK DAKTİLO */
+function typeTitle() {
+  let i = 0;
+  function yaz() {
+    if (i < titleText.length) {
+      title.innerHTML += titleText.charAt(i);
+      i++;
+      setTimeout(yaz, 60);
+    } else {
+      typeText();
+    }
+  }
+  yaz();
+}
+
+/* ANA YAZI DAKTİLO */
+function typeText() {
+  let i = 0;
+  function yaz() {
+    if (i < message.length) {
+      text.innerHTML += message.charAt(i);
+      i++;
+      setTimeout(yaz, 40);
+    } else {
+      afterText.style.display = "block";
+
+      // fotolar fade-in
+      photos.forEach((p, index) => {
+        setTimeout(() => {
+          p.style.opacity = 1;
+        }, index * 500);
+      });
+    }
+  }
+  yaz();
+}
+
+/* KALPLER */
+function hearts() {
+  setInterval(() => createItem("❤️"), 200);
+}
+
+/* ÇİÇEK BUTONU */
+flowerBtn.onclick = () => {
+  setInterval(() => createItem("🌸"), 150);
+  finalArea.style.display = "block";
+};
+
+/* ITEM */
+function createItem(emoji) {
+  const el = document.createElement("div");
+  el.className = "item";
+  el.innerHTML = emoji;
+
+  el.style.left = Math.random() * 100 + "vw";
+  el.style.animationDuration = (Math.random() * 3 + 2) + "s";
+
+  document.body.appendChild(el);
+  setTimeout(() => el.remove(), 5000);
+}
+</script>
+
+</body>
+</html>
